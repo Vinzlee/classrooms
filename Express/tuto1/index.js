@@ -10,9 +10,38 @@
  * @date           27/11/2016
  */
 
+
+/********************************* IMPORTS *********************************/
+
 const express = require("express");
+const bodyParser = require("body-parser");
+const mongodb = require("mongodb");
+
+/******************************** DEFINITION *******************************/
+
+//Build the server
 const app = express();
 
+//Build the DataBase
+const mongo = mongodb.MongoClient;
+
+//Set the parser middleware to read the body requests/responses of Express
+app.use(bodyParser.urlencoded({extended: true}));
+
+//Connect to the database
+
+//Start the server
 app.listen(3000, () => {
-   console.log("listening on 127.0.0.1:3000");
+
+    console.log("listening on 127.0.0.1:3000");
+
+    app.get("/", (request, response) => {
+        response.sendFile(__dirname + "/views/main.html");
+    });
+
+    app.post("/quotes", (request, response) => {
+        console.log("Post has been sent :");
+        console.log(request.body);
+    });
+
 });

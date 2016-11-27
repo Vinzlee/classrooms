@@ -6,9 +6,15 @@
   "author": "Vincent CHOLLET",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongo-db": "^1.0.1"
   },
   "scripts": {
+    "dev": "nodemon index.js -e html,js,json",
     "start": "node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
